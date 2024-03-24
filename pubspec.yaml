@@ -43,7 +43,8 @@ dependencies:
   animate_do: ^3.3.4
   google_fonts: ^5.1.0
   flutter_svg: ^2.0.10+1
-  cached_network_image:
+  intl: ^0.17.0
+  slide_to_act: ^2.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

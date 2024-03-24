@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,12 +6,14 @@ import 'package:sample/screens/details_screen/ui_elements/associated_partner_til
 import 'package:sample/screens/details_screen/ui_elements/documents_tile.dart';
 import 'package:sample/screens/details_screen/ui_elements/highlights_tile.dart';
 import 'package:sample/screens/details_screen/ui_elements/investment_details_tile.dart';
+import 'package:sample/screens/payment_screen/payment_screen.dart';
 
 import 'ui_elements/brand_details_tile.dart';
 import 'ui_elements/brand_logo_tile.dart';
 import 'ui_elements/key_metrics_tile.dart';
 
 class DetailsScreen extends StatefulWidget {
+  static String id = "DetailsScreen";
   const DetailsScreen({super.key});
 
   @override
@@ -25,11 +26,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-      scrolledUnderElevation: 0,
-        leading: Container(margin: const EdgeInsets.only(left: 24), child: const Icon(Icons.arrow_back, color: primaryColor, size: 21,)),
-        leadingWidth: 47,
-        title: Text("Back to Deals", style: GoogleFonts.inter(color: primaryColor, fontSize: 14, height: 1.5, fontWeight: FontWeight.w500),),
+      appBar: PreferredSize(
+        preferredSize: Size(screenSize.width,70),
+        child: AppBar(
+        scrolledUnderElevation: 0,
+          leading: Container(margin: const EdgeInsets.only(left: 24), child: const Icon(Icons.arrow_back, color: primaryColor, size: 21,)),
+          leadingWidth: 47,
+          title: Text("Back to Deals", style: GoogleFonts.inter(color: primaryColor, fontSize: 14, height: 1.5, fontWeight: FontWeight.w500),),
+        ),
       ),
       body: SingleChildScrollView(
         physics:const BouncingScrollPhysics(),
@@ -225,21 +229,26 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ],
               ),
             ),
-      Container(
-        height: 42,
-          width: 143,
-          decoration:  BoxDecoration(
-            color: Color(0xFF16A34A),
-            border: Border.all(color: Color(0xFF147639), width: 1.0),
-            borderRadius: BorderRadius.all(
-              Radius.circular(8.0),
+      GestureDetector(
+        onTap: (){
+          Navigator.pushNamed(context, PaymentScreen.id);
+        },
+        child: Container(
+          height: 42,
+            width: 143,
+            decoration:  BoxDecoration(
+              color: Color(0xFF16A34A),
+              border: Border.all(color: Color(0xFF147639), width: 1.0),
+              borderRadius: BorderRadius.all(
+                Radius.circular(8.0),
+              ),
             ),
-          ),
-          child: Center(child: Builder(
-              builder: (context) {
-                return Text("Tap to Invest", style: GoogleFonts.inter(color: Colors.white, fontSize: 14, height: 1.5, fontWeight: FontWeight.w600));
-              }
-          ))
+            child: Center(child: Builder(
+                builder: (context) {
+                  return Text("Tap to Invest", style: GoogleFonts.inter(color: Colors.white, fontSize: 14, height: 1.5, fontWeight: FontWeight.w600));
+                }
+            ))
+        ),
       ),
           ],
         ),

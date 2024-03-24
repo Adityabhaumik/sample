@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sample/screens/payment_screen/payment_screen.dart';
 import 'package:sample/screens/temp/temp.dart';
 
 import 'package:vibration/vibration.dart';
@@ -22,6 +23,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: DetailsScreen(),
+      routes: {
+        DetailsScreen.id:(context) => const DetailsScreen(),
+        PaymentScreen.id:(context) =>const PaymentScreen()
+      },
     );
   }
 }
