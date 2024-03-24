@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sample/screens/temp/temp.dart';
+
 import 'package:vibration/vibration.dart';
+
+import 'screens/details_screen/details_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -17,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: DetailsScreen(),
     );
   }
 }
