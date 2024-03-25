@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:sample/app_constants.dart';
 import 'package:sample/screens/details_screen/ui_elements/associated_partner_tile.dart';
 import 'package:sample/screens/details_screen/ui_elements/documents_tile.dart';
@@ -8,6 +9,7 @@ import 'package:sample/screens/details_screen/ui_elements/highlights_tile.dart';
 import 'package:sample/screens/details_screen/ui_elements/investment_details_tile.dart';
 import 'package:sample/screens/payment_screen/payment_screen.dart';
 
+import '../../ui_elements/app_button.dart';
 import 'ui_elements/brand_details_tile.dart';
 import 'ui_elements/brand_logo_tile.dart';
 import 'ui_elements/key_metrics_tile.dart';
@@ -229,27 +231,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ],
               ),
             ),
-      GestureDetector(
-        onTap: (){
-          Navigator.pushNamed(context, PaymentScreen.id);
-        },
-        child: Container(
-          height: 42,
-            width: 143,
-            decoration:  BoxDecoration(
-              color: Color(0xFF16A34A),
-              border: Border.all(color: Color(0xFF147639), width: 1.0),
-              borderRadius: BorderRadius.all(
-                Radius.circular(8.0),
-              ),
-            ),
-            child: Center(child: Builder(
-                builder: (context) {
-                  return Text("Tap to Invest", style: GoogleFonts.inter(color: Colors.white, fontSize: 14, height: 1.5, fontWeight: FontWeight.w600));
-                }
-            ))
-        ),
-      ),
+            AppButton(handler: (){
+              Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeftWithFade, child: PaymentScreen()));
+            },label: "Tap to Invest",),
           ],
         ),
       ),

@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:sample/app_constants.dart';
+import 'package:sample/screens/processing_screen/processing_screen.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 
 import 'ui_elements/purchasing_tile.dart';
@@ -224,7 +226,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         return Container(
                           alignment: Alignment.topLeft,
                           child: DragIncreaseWidget(maxWidth: screenSize.width*0.9,onIncreaseComplete: (){
-                            //Navigator.pushNamed(context, routeName);
+                            Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeftWithFade, child: ProcessingScreen()));
                           },));
                       }
                   ),
