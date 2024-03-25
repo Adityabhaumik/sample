@@ -19,7 +19,7 @@ class AssociatedPartnersTile extends StatelessWidget {
         children: [
           Text(title, style: GoogleFonts.inter(color: Color(0xFF44403C), fontSize: 16, height: 1.5, fontWeight: FontWeight.w500)),
           Container(
-            height: 35, // Set the desired height for the list
+            height: 35,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 3,

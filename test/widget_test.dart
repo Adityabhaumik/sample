@@ -6,25 +6,52 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:sample/main.dart';
+import 'package:sample/screens/details_screen/ui_elements/associated_partner_tile.dart';
+import 'package:sample/screens/details_screen/ui_elements/brand_details_tile.dart';
+import 'package:sample/screens/details_screen/ui_elements/documents_tile.dart';
+import 'package:sample/screens/payment_screen/ui_elements/purchasing_tile.dart';
+import 'package:sample/screens/payment_screen/ui_elements/total_return_value.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('BrandDetailsTile widget test', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: BrandDetailsTile(
+          investIn: 'Investment In',
+          investBy: 'Investment By',
+          investInBio: 'Investment In Bio',
+        ),
+      ),
+    ));
+    expect(find.text('Investment In'), findsOneWidget);
+    expect(find.text('Investment By'), findsOneWidget);
+    expect(find.text('Investment In Bio'), findsOneWidget);
+    expect(find.byIcon(Icons.arrow_back), findsOneWidget);
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  });
+  testWidgets('PurchasingTile widget test', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: PurchasingTile(
+          purchasingFrom: 'Company A',
+          purchasedBy: 'John Doe',
+        ),
+      ),
+    ));
+    expect(find.text('Purchasing'), findsOneWidget);
+    expect(find.text('Company A'), findsOneWidget);
+    expect(find.text('John Doe'), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('buildReturnAmountList function test', () {
+    String inputValue = '50,000';
+    List resultList = buildReturnAmountList(inputValue);
+    print(resultList);
+    expect(resultList.isNotEmpty, true);
+    expect(resultList.length, 6);
   });
 }

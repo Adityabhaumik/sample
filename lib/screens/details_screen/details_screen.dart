@@ -207,13 +207,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
               color: Color(0xFF000000).withOpacity(0.04),
               spreadRadius: 0,
               blurRadius: 4,
-              offset: Offset(0, -4), // changes position of shadow
+              offset: Offset(0, -4),
             ),
             BoxShadow(
               color: Color(0xFF000000).withOpacity(0.06),
               spreadRadius: 0,
               blurRadius: 1,
-              offset: Offset(0, -1), // changes position of shadow
+              offset: Offset(0, -1),
             ),
           ],
         ),

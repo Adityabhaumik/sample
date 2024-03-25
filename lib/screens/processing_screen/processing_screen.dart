@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,7 +6,6 @@ import 'package:page_transition/page_transition.dart';
 import 'package:sample/screens/contract_screen/contract_screen.dart';
 import 'package:vibration/vibration.dart';
 
-import '../payment_screen/payment_screen.dart';
 
 class ProcessingScreen extends StatefulWidget {
   static const id = "ProcessingScreen";
@@ -100,7 +98,7 @@ class _ZoomInWidgetState extends State<ZoomInWidget> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      opacity: _isBoxVisible ? 1.0 : 0.0, // Make container visible or invisible based on _isVisible
+      opacity: _isBoxVisible ? 1.0 : 0.0,
       duration: Duration(milliseconds: 500),
       curve: Curves.easeInOut,
       child: AnimatedContainer(
@@ -153,7 +151,7 @@ class _ZoomInWidgetState extends State<ZoomInWidget> with SingleTickerProviderSt
                     top: 13,
                     left: 13,
                     child: AnimatedOpacity(
-                      opacity: _isCheckVisible ? 1.0 : 0.0, // Make container visible or invisible based on _isVisible
+                      opacity: _isCheckVisible ? 1.0 : 0.0,
                       duration: Duration(milliseconds: 500),
                       curve: Curves.easeInOut,
                       child: AnimatedContainer(
@@ -166,7 +164,6 @@ class _ZoomInWidgetState extends State<ZoomInWidget> with SingleTickerProviderSt
                             width: 19,
                             height: 19,
                             semanticsLabel: 'img'
-
                         ),
                       ),
                     ),
@@ -189,8 +186,6 @@ class ZoomInText extends StatefulWidget {
 class _ZoomInTextState extends State<ZoomInText> with SingleTickerProviderStateMixin{
   double _paymentDone = 0.0;
   bool _isBoxVisible = false;
-  bool _isCheckVisible = false;
-  double _checkScale = 0.0;
   String label = "Payment done";
   late AnimationController _controller;
   @override
@@ -217,11 +212,11 @@ class _ZoomInTextState extends State<ZoomInText> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      opacity: _isBoxVisible ? 1.0 : 0.0, // Make container visible or invisible based on _isVisible
+      opacity: _isBoxVisible ? 1.0 : 0.0,
       duration: Duration(milliseconds: 500),
       curve: Curves.easeInOut,
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 175),
+        duration:const Duration(milliseconds: 175),
         curve: Curves.fastEaseInToSlowEaseOut,
         transform: Matrix4.diagonal3Values(_paymentDone, _paymentDone, 1.0),
         child: AnimatedSwitcher(
@@ -236,7 +231,7 @@ class _ZoomInTextState extends State<ZoomInText> with SingleTickerProviderStateM
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(label,style: GoogleFonts.inter(fontWeight: FontWeight.w600,fontSize: 16,height: 1.5,color: Color(0xFFFFFFFF)),),
-                SizedBox(height: 16,),
+                const SizedBox(height: 16,),
                 Container(margin: EdgeInsets.symmetric(horizontal: 36), child: Text("You are almost there!\nDo not leave this page, or press back button",textAlign: TextAlign.center ,style: GoogleFonts.inter(fontWeight: FontWeight.w400,fontSize: 12,height: 1.5,color: Color(0xFFA1CCB1)),)),
               ],
 

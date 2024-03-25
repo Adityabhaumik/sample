@@ -46,6 +46,7 @@ class DocumentsTile extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(vertical: 20,horizontal: 20),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -78,5 +79,7 @@ class DocumentsTile extends StatelessWidget {
           )
       );
     });
+
+
   }
 }

@@ -66,7 +66,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           children: [
             Container(
               margin:const EdgeInsets.only(left: 24),
-              child: const PurchasingTile(),
+              child: PurchasingTile(purchasedBy: "Keshav Industries",purchasingFrom: "Agrizy"),
             ),
             const SizedBox(height: 24,),
             const Divider(thickness: 1,color: Color(0xFFDDDDD8),),
@@ -225,8 +225,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       builder: (context) {
                         return Container(
                           alignment: Alignment.topLeft,
-                          child: DragIncreaseWidget(maxWidth: screenSize.width*0.9,onIncreaseComplete: (){
-                            Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeftWithFade, child: ProcessingScreen()));
+                          child: DragIncreaseWidget(amount: amount, maxWidth: screenSize.width*0.9,onIncreaseComplete: (slider){
+                             if(amount<50000){
+                               setState(() {
+                                 showEmptyAmountMessage=true;
+                               });
+                             }else{
+                               Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeftWithFade, child:const ProcessingScreen()));
+                             }
+
                           },));
                       }
                   ),
@@ -278,12 +285,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 if(value.isEmpty){
                   _textFieldWidth =168.0;
                   showEmptyAmountMessage=true;
+                  amount=0;
                 }else {
                   showEmptyAmountMessage=false;
                   _textFieldWidth = (value.length * 14.0) + 50;
-                  if(num.parse(number)>=50000){
                     amount = int.parse(number);
-                  }
+
                 }
               });
             },

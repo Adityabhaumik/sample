@@ -24,7 +24,6 @@ class KeyMetricsTile extends StatelessWidget {
           Container(padding: EdgeInsets.only(left: 24),child: Text("Key Metrics", style: GoogleFonts.inter(color: Color(0xFF44403C), fontSize: 16, height: 1.5, fontWeight: FontWeight.w500))),
           const SizedBox(height: 16,),
           Container(
-            // Set the desired height for the list
             height: 27,
             child: ListView.builder(
               padding: EdgeInsets.symmetric(horizontal: 24),

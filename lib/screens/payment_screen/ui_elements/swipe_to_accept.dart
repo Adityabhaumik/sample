@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 class DragIncreaseWidget extends StatefulWidget {
   final double maxWidth;
-  final VoidCallback onIncreaseComplete;
-
+  final Function onIncreaseComplete;
+  final int amount;
   const DragIncreaseWidget({
     Key? key,
     required this.maxWidth,
     required this.onIncreaseComplete,
+    required this.amount
   }) : super(key: key);
 
   @override
@@ -30,12 +31,12 @@ class _DragIncreaseWidgetState extends State<DragIncreaseWidget> {
       },
       onHorizontalDragEnd: (DragEndDetails details) {
         if (currentWidth >= widget.maxWidth) {
-          widget.onIncreaseComplete();
-        } else {
+          widget.onIncreaseComplete(currentWidth);
+        }
           setState(() {
             currentWidth = 41.0;
           });
-        }
+
       },
       child: Container(
         height: 41.0,
@@ -43,7 +44,7 @@ class _DragIncreaseWidgetState extends State<DragIncreaseWidget> {
         width: currentWidth,
         decoration: BoxDecoration(
           color: Color(0xFF15803D),
-          borderRadius: BorderRadius.circular(6), // Adjust the radius as needed
+          borderRadius: BorderRadius.circular(6),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
